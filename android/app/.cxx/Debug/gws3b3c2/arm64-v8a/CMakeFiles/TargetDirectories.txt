@@ -1,0 +1,2 @@
+C:/Users/PMLS/Documents/NetsolProject/todo_app/android/app/.cxx/Debug/gws3b3c2/arm64-v8a/CMakeFiles/edit_cache.dir
+C:/Users/PMLS/Documents/NetsolProject/todo_app/android/app/.cxx/Debug/gws3b3c2/arm64-v8a/CMakeFiles/rebuild_cache.dir
