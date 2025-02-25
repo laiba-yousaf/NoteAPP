@@ -43,7 +43,7 @@ class Button extends StackedView<ButtonModel> {
           width: width ?? screenWidth(context),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20.0),
-              color: borderStatus ? color : null,
+              color: color,
               border: borderStatus ? null : Border.all(color: color!)),
           child: Center(
             child: loading
@@ -51,7 +51,7 @@ class Button extends StackedView<ButtonModel> {
                 : Text(
                     title,
                     style: TextStyle(
-                        color: borderStatus ? Colors.white : kcPrimaryColor),
+                        color: borderStatus ? Colors.white : kcDarkGreyColor),
                   ),
           ),
         ),

@@ -3,6 +3,7 @@ import 'package:stacked/stacked.dart';
 import 'package:todo_app/ui/common/app_colors.dart';
 import 'package:todo_app/ui/common/ui_helpers.dart';
 import 'package:todo_app/ui/models/notes_model.dart';
+import 'package:todo_app/ui/widgets/common/button/button.dart';
 
 import 'edit_screen_viewmodel.dart';
 
@@ -25,9 +26,7 @@ class EditScreenView extends StackedView<EditScreenViewModel> {
   ) {
     return WillPopScope(
       onWillPop: () async {
-        // Save the note when the user attempts to navigate back
         await viewModel.editNote();
-        // Allow the pop (navigation back) to happen
         return true;
       },
       child: Scaffold(
@@ -53,84 +52,80 @@ class EditScreenView extends StackedView<EditScreenViewModel> {
         ),
         body: Padding(
           padding: const EdgeInsets.all(20.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              verticalSpaceMedium,
-              TextFormField(
-                controller: viewModel.titleController,
-                decoration: InputDecoration(
-                  label: RichText(
-                    text: const TextSpan(
-                      text: 'Enter ',
-                      style: TextStyle(color: Colors.grey),
-                      children: <TextSpan>[
-                        TextSpan(
-                          text: 'Name',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                  ),
-                  border: const OutlineInputBorder(),
-                ),
-              ),
-              verticalSpaceMedium,
-              TextFormField(
-                controller: viewModel.descriptionController,
-                decoration: InputDecoration(
-                  label: RichText(
-                    text: const TextSpan(
-                      text: 'Enter ',
-                      style: TextStyle(color: Colors.grey),
-                      children: <TextSpan>[
-                        TextSpan(
-                          text: 'Description',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                  ),
-                  border: const OutlineInputBorder(),
-                ),
-                maxLines: 3,
-              ),
-              verticalSpaceLarge,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  TextButton(
-                    onPressed: () {
-                      viewModel.editNote();
-                      Navigator.pop(context);
-                    },
-                    child: RichText(
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                verticalSpaceLarge,
+                TextFormField(
+                  controller: viewModel.titleController,
+                  decoration: InputDecoration(
+                    label: RichText(
                       text: const TextSpan(
-                        text: 'Edit',
-                        style: TextStyle(
-                          color: kcPrimaryColor,
-                          fontSize: 16,
-                        ),
+                        text: 'Enter ',
+                        style: TextStyle(color: Colors.grey),
+                        children: <TextSpan>[
+                          TextSpan(
+                            text: 'Name',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        ],
                       ),
                     ),
+                    border: const OutlineInputBorder(),
+                          enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                  borderSide: const BorderSide(color:kcPrimaryColor, width: 1.5), // Default border color
+                ),
                   ),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    child: RichText(
+                ),
+                verticalSpaceMedium,
+                TextFormField(
+                  controller: viewModel.descriptionController,
+                  decoration: InputDecoration(
+                    label: RichText(
                       text: const TextSpan(
-                        text: 'Delete',
-                        style: TextStyle(
-                          color: Color.fromARGB(255, 250, 2, 2),
-                          fontSize: 16,
-                        ),
+                        text: 'Enter ',
+                        style: TextStyle(color: Colors.grey),
+                        children: <TextSpan>[
+                          TextSpan(
+                            text: 'Description',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        ],
                       ),
                     ),
+                    border: const OutlineInputBorder(),
+                          enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                  borderSide: const BorderSide(color:kcPrimaryColor, width: 1.5), // Default border color
+                ),
                   ),
-                ],
-              ),
-            ],
+                  maxLines: 3,
+                ),
+                 verticalSpaceLarge,
+                verticalSpaceMedium,
+                Button(
+                  title: "Edit",
+                  onTap: () {
+                    viewModel.editNote();
+                    Navigator.pop(context);
+                  },
+                  color: kcPrimaryColor,
+                  borderStatus: true,
+                ),
+                verticalSpaceSmall,
+                Button(
+                  title: "Cancel",
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  color: kcPrimaryColor,
+                  borderStatus: false,
+                ),
+              
+              ],
+            ),
           ),
         ),
       ),

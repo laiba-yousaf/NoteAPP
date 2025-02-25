@@ -30,7 +30,7 @@ class SignUpView extends StackedView<SignUpViewModel> {
                   verticalSpaceMedium,
                   verticalSpaceLarge,
                   const Image(
-                    image: AssetImage(logo),
+                    image: AssetImage(logo,),
                     width: 100,
                     height: 100,
                   ),
@@ -78,19 +78,21 @@ class SignUpView extends StackedView<SignUpViewModel> {
                               ? Icons.visibility
                               : Icons.visibility_off))),
 
-                  verticalSpaceMedium,
+                  verticalSpaceLarge,
                   Button(
                     title: "Sign up",
                     onTap: viewModel.signUpNow,
                     color: kcPrimaryColor,
                     borderStatus: true,
+
                   ),
                   verticalSpaceMedium,
                   TextButton(
                     onPressed: viewModel.replaceWithLoginView,
                     child: const Text(
                       "Already have an account",
-                      style: TextStyle(color: kcPrimaryColor),
+                      style: TextStyle(color: kcPrimaryColor,fontWeight:FontWeight.w800,),
+                        
                     ),
                   ),
                   // verticalSpaceLarge,

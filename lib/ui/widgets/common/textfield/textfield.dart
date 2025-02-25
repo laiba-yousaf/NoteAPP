@@ -33,8 +33,9 @@ class Textfield extends StackedView<TextfieldModel> {
   ) {
     return Container(
       decoration: BoxDecoration(
-        color: borderTitle == null ? kcVeryLightGrey : null,
+       // color: borderTitle == null ? kcPrimaryColor : null,
         borderRadius: BorderRadius.circular(10.0),
+        border: Border.all(color: kcPrimaryColor)
       ),
       child: ctrl != null
           ? TextFormField(

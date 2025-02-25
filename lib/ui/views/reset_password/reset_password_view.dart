@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:todo_app/ui/common/app_colors.dart';
+import 'package:todo_app/ui/common/app_image.dart';
 import 'package:todo_app/ui/common/ui_helpers.dart';
 import 'package:todo_app/ui/widgets/common/button/button.dart';
 import 'package:todo_app/ui/widgets/common/textfield/textfield.dart';
@@ -24,14 +25,24 @@ class ResetPasswordView extends StackedView<ResetPasswordViewModel> {
         children: [
           verticalSpaceMedium,
           verticalSpaceLarge,
+          const Image(
+            image: AssetImage(
+              logo,
+            ),
+            width: 100,
+            height: 100,
+          ),
+          verticalSpaceLarge,
           const Text(
             "Reset Password",
             style: TextStyle(
-                fontSize: 24, color: kcLightGrey, fontWeight: FontWeight.bold),
+                fontSize: 24,
+                fontWeight: FontWeight.w500,
+                color: kcPrimaryColor),
           ),
           verticalSpaceSmall,
           const Text(
-            "please enter your email to receive a link to \n      create a new password via email",
+            "Please enter your email to receive a link to \n      create a new password via email",
             style: TextStyle(fontSize: 14, color: kcLightGrey),
           ),
           verticalSpaceLarge,
@@ -39,7 +50,7 @@ class ResetPasswordView extends StackedView<ResetPasswordViewModel> {
             title: "Email address",
             ctrl: viewModel.nameController,
           ),
-          verticalSpaceMedium,
+          verticalSpaceLarge,
           Button(
             title: "Send",
             onTap: () {},
@@ -53,10 +64,15 @@ class ResetPasswordView extends StackedView<ResetPasswordViewModel> {
             children: [
               const Text(
                 "Don't have an Account?",
-                style: TextStyle(color: kcLightGrey),
+                style: TextStyle(
+                  color: kcLightGrey,
+                  fontWeight: FontWeight.w800,
+                ),
               ),
               TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    viewModel.navigateToLogin();
+                  },
                   child: const Text(
                     "Sign Up",
                     style: TextStyle(color: kcPrimaryColor),

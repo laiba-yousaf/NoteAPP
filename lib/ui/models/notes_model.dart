@@ -3,14 +3,17 @@ class NotesModel {
   String title;
   String description;
   int? intValue;
-  Map<String, dynamic>? mapValue;
+  String? audioUrl;
+  String? imageUrl;
+
 
   NotesModel({
     required this.id,
     required this.title,
     required this.description,
     this.intValue,
-    this.mapValue,
+    this.audioUrl,
+    this.imageUrl
   });
 
   // Convert Firestore DocumentSnapshot to NotesModel
@@ -21,7 +24,8 @@ class NotesModel {
       title: data['title'] ?? '',
       description: data['description'] ?? '',
       intValue: data['intValue'] as int?,
-      mapValue: data['mapValue'] as Map<String, dynamic>?,
+      audioUrl: data['audioUrl'] as String ,
+      imageUrl: data['imageUrl'] as String
     );
   }
 
@@ -31,7 +35,8 @@ class NotesModel {
       'title': title,
       'description': description,
       'intValue': intValue,
-      'mapValue': mapValue,
+      'audioUrl':audioUrl,
+      'imageUrl':imageUrl
     };
   }
 }

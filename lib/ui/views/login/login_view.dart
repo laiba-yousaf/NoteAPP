@@ -39,18 +39,19 @@ class LoginView extends StackedView<LoginViewModel> {
                     "Welcome to NOTE APP",
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500,
+                        fontSize: 22,
+                        fontWeight:FontWeight.w800,
                         color: kcPrimaryColor),
                   ),
-                  const Text(
+                   const Text(
                     "Log In to continue",
-                    style: TextStyle(fontSize: 14, color: kcLightGrey),
+                    style: TextStyle(fontSize: 14, color: kcLightGrey,fontWeight:FontWeight.bold),
                   ),
                   verticalSpaceMedium,
                   Textfield(
                     title: "Email",
                     ctrl: viewModel.emailCtrl,
+                    //borderTitle: kcPrimaryColor,
                   ),
                   verticalSpaceSmall,
                   Textfield(
@@ -72,7 +73,7 @@ class LoginView extends StackedView<LoginViewModel> {
                         },
                         child: const Text(
                           "Forgot your password?",
-                          style: TextStyle(color: kcPrimaryColor),
+                          style: TextStyle(color: kcPrimaryColor,  fontWeight:FontWeight.w800,),
                         ),
                       ),
                     ],
@@ -90,7 +91,7 @@ class LoginView extends StackedView<LoginViewModel> {
                     viewModel.navigateToSignup,
                     child: const Text(
                       "Create new account",
-                      style: TextStyle(color: kcPrimaryColor),
+                      style: TextStyle(color: kcPrimaryColor,  fontWeight:FontWeight.w800,),
                     ),
                   ),
                   // verticalSpaceLarge,

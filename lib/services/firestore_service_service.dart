@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:todo_app/ui/models/notes_model.dart';
 
 class FirestoreServiceService {
@@ -28,5 +31,36 @@ class FirestoreServiceService {
   // Delete Note
   Future<void> deleteNote(String noteId) async {
     await notesCollection.doc(noteId).delete();
+  }
+
+  Future<String?> uploadImage(File imageUrl) async {
+    try {
+      String fileName = DateTime.now().millisecondsSinceEpoch.toString();
+      Reference ref =
+          FirebaseStorage.instance.ref().child("images/$fileName.jpg");
+      UploadTask uploadTask = ref.putFile(imageUrl);
+      TaskSnapshot snapshot = await uploadTask;
+      return await snapshot.ref.getDownloadURL();
+    } catch (e) {
+      print(
+        'Error uploading image:$e',
+      );
+      return null;
+    }
+  }
+
+  Future<String?> uploadAudio(File audioFile) async {
+    try {
+      String fileName = DateTime.now().millisecondsSinceEpoch.toString();
+      Reference ref =
+          FirebaseStorage.instance.ref().child('audio/$fileName.mp3');
+      UploadTask uploadTask = ref.putFile(audioFile);
+
+      TaskSnapshot snapshot = await uploadTask;
+      return await snapshot.ref.getDownloadURL();
+    } catch (e) {
+      print("Error uploading audio: $e");
+      return null;
+    }
   }
 }
